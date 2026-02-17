@@ -1,21 +1,232 @@
-<section class="premium-hero">
-    <div class="hero-left">
-        <h1>Transforming Indian Agriculture Through Structured Learning</h1>
-        <p>AgriFit is India's first transformation-driven agri membership platform built for farmers, FPO leaders & agri graduates.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AgriFit – Transforming Agriculture</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <div class="hero-cta">
-            <button class="primary-btn">Explore Programs</button>
-            <button class="secondary-btn">Join Community</button>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS FILE -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+    <div class="logo">
+        <span>🌾 AgriFit</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#courses">Courses</a>
+        <a href="#membership">Membership</a>
+        <a href="#impact">Impact</a>
+        <a href="#" class="cta-nav" onclick="openForm()">Join</a>
+    </div>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<header class="hero">
+    <div class="hero-content">
+        <h1>India’s First Agri Transformation Platform</h1>
+        <p>Structured Learning • Field Implementation • Income Growth</p>
+
+        <div class="hero-buttons">
+            <a href="#courses" class="primary-btn">Explore Programs</a>
+            <a href="#" class="secondary-btn" onclick="openForm()">Join Now</a>
         </div>
+    </div>
+</header>
 
-        <div class="hero-trust">
-            <span>25,000+ Members</span>
-            <span>5 States</span>
-            <span>30% Income Growth</span>
+
+<!-- ================= CATEGORY COURSES ================= -->
+
+<section id="courses" class="section">
+
+    <h2>Choose Your Path</h2>
+
+    <div class="category-buttons">
+        <button onclick="showCategory('farmer')">Farmer</button>
+        <button onclick="showCategory('fpo')">FPO Leader</button>
+        <button onclick="showCategory('graduate')">Agri Graduate</button>
+    </div>
+
+    <!-- FARMER -->
+    <div id="farmer" class="category-content">
+        <div class="course-grid">
+
+            <div class="course-card">
+                <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854">
+                <h3>High Value Crop Builder</h3>
+                <p>12 Week structured farming transformation program.</p>
+            </div>
+
+            <div class="course-card">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf">
+                <h3>Integrated Farming Model</h3>
+                <p>Crop + Dairy + Value Addition Model.</p>
+            </div>
+
         </div>
     </div>
 
-    <div class="hero-right">
-        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854">
+    <!-- FPO -->
+    <div id="fpo" class="category-content">
+        <div class="course-grid">
+
+            <div class="course-card">
+                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
+                <h3>FPO Governance Mastery</h3>
+                <p>Board structure, compliance & leadership.</p>
+            </div>
+
+            <div class="course-card">
+                <img src="https://images.unsplash.com/photo-1556741533-f6acd647d2fb">
+                <h3>FPO Business Strategy</h3>
+                <p>Market linkage & aggregation planning.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- GRADUATE -->
+    <div id="graduate" class="category-content">
+        <div class="course-grid">
+
+            <div class="course-card">
+                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+                <h3>Agri Industry Bootcamp</h3>
+                <p>Become industry-ready in 10 weeks.</p>
+            </div>
+
+            <div class="course-card">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
+                <h3>Agri Entrepreneurship Launchpad</h3>
+                <p>Start your agri startup from scratch.</p>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ================= MEMBERSHIP ================= -->
+
+<section id="membership" class="section alt">
+    <h2>Membership Plans</h2>
+
+    <div class="pricing-grid">
+
+        <div class="price-card">
+            <h3>Basic</h3>
+            <p>₹2,000 / Year</p>
+        </div>
+
+        <div class="price-card highlight">
+            <h3>Advanced</h3>
+            <p>₹6,000 / Year</p>
+        </div>
+
+        <div class="price-card">
+            <h3>Premium</h3>
+            <p>₹15,000 / Year</p>
+        </div>
+
     </div>
 </section>
+
+
+<!-- ================= IMPACT ================= -->
+
+<section id="impact" class="section">
+    <h2>Impact Vision 2029</h2>
+
+    <div class="stats">
+        <div>
+            <h3>25,000+</h3>
+            <p>Members</p>
+        </div>
+
+        <div>
+            <h3>5 States</h3>
+            <p>Presence</p>
+        </div>
+
+        <div>
+            <h3>30% ↑</h3>
+            <p>Income Growth</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+    <div class="footer-content">
+        <div>
+            <h3>AgriFit</h3>
+            <p>Empowering Farmers. Strengthening FPOs. Building Agri Leaders.</p>
+        </div>
+
+        <div>
+            <p>Phone: +91 7996213245</p>
+            <p>Davangere, Karnataka – 577005</p>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ================= CONTACT MODAL ================= -->
+
+<div class="contact-form-bg" id="formBg">
+    <div class="contact-form">
+        <h3>Join AgriFit</h3>
+
+        <input type="text" placeholder="Your Name">
+        <input type="tel" placeholder="Your Phone Number">
+        <input type="text" placeholder="Your Location">
+
+        <button>Submit</button>
+        <button onclick="closeForm()">Cancel</button>
+    </div>
+</div>
+
+
+<!-- ================= WHATSAPP FLOAT ================= -->
+
+<a href="https://wa.me/917996213245" class="whatsapp-float" target="_blank">
+    WhatsApp
+</a>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function showCategory(category) {
+    document.querySelectorAll('.category-content')
+        .forEach(el => el.style.display = 'none');
+
+    document.getElementById(category).style.display = 'block';
+}
+
+function openForm() {
+    document.getElementById('formBg').style.display = 'flex';
+}
+
+function closeForm() {
+    document.getElementById('formBg').style.display = 'none';
+}
+
+</script>
+
+</body>
+</html>
