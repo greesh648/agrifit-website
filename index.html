@@ -1,232 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>AgriFit – Transforming Agriculture</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>AgriFit | Agricultural Transformation Platform</title>
 
-    <!-- CSS FILE -->
-    <link rel="stylesheet" href="style.css">
+<meta name="description" content="AgriFit is India's first membership-based agricultural transformation platform helping farmers, FPOs and agri graduates increase profitability and performance.">
+
+<link rel="stylesheet" href="css/style.css">
+<script defer src="js/main.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
-
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVIGATION ================= -->
 
-<nav class="navbar">
-    <div class="logo">
-        <span>🌾 AgriFit</span>
-    </div>
+<header class="navbar">
+    <div class="logo">AgriFit</div>
 
-    <div class="nav-links">
-        <a href="#courses">Courses</a>
-        <a href="#membership">Membership</a>
-        <a href="#impact">Impact</a>
-        <a href="#" class="cta-nav" onclick="openForm()">Join</a>
-    </div>
-</nav>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#membership">Membership</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="scheme-hub.html">Scheme Hub</a></li>
+        </ul>
+    </nav>
 
-
-<!-- ================= HERO ================= -->
-
-<header class="hero">
-    <div class="hero-content">
-        <h1>India’s First Agri Transformation Platform</h1>
-        <p>Structured Learning • Field Implementation • Income Growth</p>
-
-        <div class="hero-buttons">
-            <a href="#courses" class="primary-btn">Explore Programs</a>
-            <a href="#" class="secondary-btn" onclick="openForm()">Join Now</a>
-        </div>
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
     </div>
 </header>
 
+<!-- ================= HERO SECTION ================= -->
 
-<!-- ================= CATEGORY COURSES ================= -->
+<section class="hero" id="hero">
+    <div class="hero-overlay"></div>
 
-<section id="courses" class="section">
+    <div class="hero-content">
+        <h1>
+            Transform Your Agriculture.<br>
+            Build Profits. Scale Performance.
+        </h1>
 
-    <h2>Choose Your Path</h2>
+        <p>
+            India’s first membership-based agricultural transformation ecosystem
+            for farmers, FPOs and agri graduates.
+        </p>
 
-    <div class="category-buttons">
-        <button onclick="showCategory('farmer')">Farmer</button>
-        <button onclick="showCategory('fpo')">FPO Leader</button>
-        <button onclick="showCategory('graduate')">Agri Graduate</button>
-    </div>
-
-    <!-- FARMER -->
-    <div id="farmer" class="category-content">
-        <div class="course-grid">
-
-            <div class="course-card">
-                <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854">
-                <h3>High Value Crop Builder</h3>
-                <p>12 Week structured farming transformation program.</p>
-            </div>
-
-            <div class="course-card">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf">
-                <h3>Integrated Farming Model</h3>
-                <p>Crop + Dairy + Value Addition Model.</p>
-            </div>
-
+        <div class="hero-buttons">
+            <a href="#programs" class="btn-primary">Explore Programs</a>
+            <a href="#membership" class="btn-secondary">Join Membership</a>
         </div>
     </div>
-
-    <!-- FPO -->
-    <div id="fpo" class="category-content">
-        <div class="course-grid">
-
-            <div class="course-card">
-                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
-                <h3>FPO Governance Mastery</h3>
-                <p>Board structure, compliance & leadership.</p>
-            </div>
-
-            <div class="course-card">
-                <img src="https://images.unsplash.com/photo-1556741533-f6acd647d2fb">
-                <h3>FPO Business Strategy</h3>
-                <p>Market linkage & aggregation planning.</p>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- GRADUATE -->
-    <div id="graduate" class="category-content">
-        <div class="course-grid">
-
-            <div class="course-card">
-                <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-                <h3>Agri Industry Bootcamp</h3>
-                <p>Become industry-ready in 10 weeks.</p>
-            </div>
-
-            <div class="course-card">
-                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
-                <h3>Agri Entrepreneurship Launchpad</h3>
-                <p>Start your agri startup from scratch.</p>
-            </div>
-
-        </div>
-    </div>
-
 </section>
 
+<!-- ================= CHOOSE YOUR PATH ================= -->
+
+<section class="path-section">
+    <div class="section-header">
+        <h2>Choose Your Transformation Path</h2>
+        <p>Select your focus area and unlock structured performance tracks.</p>
+    </div>
+
+    <div class="path-grid">
+
+        <div class="path-card">
+            <i class="fas fa-seedling"></i>
+            <h3>Crop Performance Programs</h3>
+            <p>High value crops, precision systems, yield optimization.</p>
+        </div>
+
+        <div class="path-card">
+            <i class="fas fa-cow"></i>
+            <h3>Dairy & Livestock Mastery</h3>
+            <p>Scientific dairy profitability and breed management.</p>
+        </div>
+
+        <div class="path-card">
+            <i class="fas fa-user-graduate"></i>
+            <h3>Agri Graduate Bootcamp</h3>
+            <p>Industry-ready employability and startup readiness.</p>
+        </div>
+
+        <div class="path-card">
+            <i class="fas fa-building"></i>
+            <h3>FPO Leadership Track</h3>
+            <p>Capacity building and structured performance systems.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= PROGRAM LIBRARY ================= -->
+
+<section class="program-section" id="programs">
+
+    <div class="section-header">
+        <h2>AgriFit Performance Programs</h2>
+        <p>Structured transformation tracks designed for measurable outcomes.</p>
+    </div>
+
+    <div class="program-grid">
+
+        <div class="course-card">
+            <img src="assets/images/farm.jpg" alt="High Value Crops">
+            <div class="course-content">
+                <h3>High Value Crop Builder</h3>
+                <p>12 Week structured profit-oriented crop system.</p>
+                <ul>
+                    <li>✔ Hybrid mode</li>
+                    <li>✔ Certification</li>
+                    <li>✔ Scheme assistance</li>
+                </ul>
+                <a href="programs.html" class="btn-primary">View Details</a>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="assets/images/farm.jpg" alt="Dairy Program">
+            <div class="course-content">
+                <h3>Dairy Profit Accelerator</h3>
+                <p>Scientific dairy systems with cost control models.</p>
+                <ul>
+                    <li>✔ Field visits</li>
+                    <li>✔ Budget sheet</li>
+                    <li>✔ Yield planning</li>
+                </ul>
+                <a href="programs.html" class="btn-primary">View Details</a>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="assets/images/farm.jpg" alt="Agri Graduate">
+            <div class="course-content">
+                <h3>Agri Graduate Industry Track</h3>
+                <p>Employment + startup readiness certification.</p>
+                <ul>
+                    <li>✔ Internship support</li>
+                    <li>✔ Live masterclasses</li>
+                    <li>✔ Career roadmap</li>
+                </ul>
+                <a href="programs.html" class="btn-primary">View Details</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= HOW AGRIFIT WORKS ================= -->
+
+<section class="how-section">
+    <div class="section-header">
+        <h2>How AgriFit Works</h2>
+    </div>
+
+    <div class="steps-grid">
+        <div class="step">
+            <span>1</span>
+            <h4>Join Membership</h4>
+        </div>
+        <div class="step">
+            <span>2</span>
+            <h4>Choose Your Track</h4>
+        </div>
+        <div class="step">
+            <span>3</span>
+            <h4>Attend Weekly Sessions</h4>
+        </div>
+        <div class="step">
+            <span>4</span>
+            <h4>Implement in Field</h4>
+        </div>
+        <div class="step">
+            <span>5</span>
+            <h4>Track Performance</h4>
+        </div>
+        <div class="step">
+            <span>6</span>
+            <h4>Get Certified</h4>
+        </div>
+    </div>
+</section>
+
+<!-- ================= IMPACT DASHBOARD ================= -->
+
+<section class="impact" id="impact">
+    <div class="section-header light">
+        <h2>AgriFit Impact Dashboard</h2>
+    </div>
+
+    <div class="impact-grid">
+        <div>
+            <h3 class="counter" data-target="850">0</h3>
+            <p>Members Enrolled</p>
+        </div>
+        <div>
+            <h3 class="counter" data-target="2500">0</h3>
+            <p>Acres Impacted</p>
+        </div>
+        <div>
+            <h3 class="counter" data-target="42">0</h3>
+            <p>% Avg Income Increase</p>
+        </div>
+        <div>
+            <h3 class="counter" data-target="65">0</h3>
+            <p>FPOs Enrolled</p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+
+<section class="testimonial-section">
+    <div class="section-header">
+        <h2>Transformation Stories</h2>
+    </div>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+            <p>
+                “After joining AgriFit, my yield increased by 30% and cost reduced significantly.”
+            </p>
+            <h4>Ramesh Kumar</h4>
+            <span>Village: Belagavi</span>
+        </div>
+
+        <div class="testimonial-card">
+            <p>
+                “We structured our FPO operations and improved member income.”
+            </p>
+            <h4>Sunita Devi</h4>
+            <span>FPO Leader</span>
+        </div>
+
+    </div>
+</section>
 
 <!-- ================= MEMBERSHIP ================= -->
 
-<section id="membership" class="section alt">
-    <h2>Membership Plans</h2>
+<section class="membership-section" id="membership">
+
+    <div class="section-header">
+        <h2>Choose Your Membership</h2>
+    </div>
 
     <div class="pricing-grid">
 
-        <div class="price-card">
+        <div class="pricing-card">
             <h3>Basic</h3>
-            <p>₹2,000 / Year</p>
+            <h2>₹999</h2>
+            <ul>
+                <li>✔ Live Masterclasses</li>
+                <li>✔ Community Access</li>
+                <li>✔ Resource Library</li>
+            </ul>
+            <a href="#" class="btn-secondary">Join Now</a>
         </div>
 
-        <div class="price-card highlight">
+        <div class="pricing-card popular">
+            <div class="badge">Most Popular</div>
             <h3>Advanced</h3>
-            <p>₹6,000 / Year</p>
+            <h2>₹2999</h2>
+            <ul>
+                <li>✔ Field Visits</li>
+                <li>✔ Scheme Assistance</li>
+                <li>✔ Certification</li>
+                <li>✔ Performance Tracking</li>
+            </ul>
+            <a href="#" class="btn-primary">Join Now</a>
         </div>
 
-        <div class="price-card">
+        <div class="pricing-card">
             <h3>Premium</h3>
-            <p>₹15,000 / Year</p>
+            <h2>₹6999</h2>
+            <ul>
+                <li>✔ Business Planning</li>
+                <li>✔ Market Linkage</li>
+                <li>✔ 1-on-1 Mentorship</li>
+            </ul>
+            <a href="#" class="btn-secondary">Join Now</a>
         </div>
 
     </div>
 </section>
 
+<!-- ================= COMMUNITY ================= -->
 
-<!-- ================= IMPACT ================= -->
+<section class="community-section" id="community">
 
-<section id="impact" class="section">
-    <h2>Impact Vision 2029</h2>
+    <div class="section-header">
+        <h2>AgriFit Community Experience</h2>
+    </div>
 
-    <div class="stats">
+    <div class="community-grid">
         <div>
-            <h3>25,000+</h3>
-            <p>Members</p>
+            <i class="fas fa-users"></i>
+            <h4>Batch Sessions</h4>
         </div>
-
         <div>
-            <h3>5 States</h3>
-            <p>Presence</p>
+            <i class="fab fa-whatsapp"></i>
+            <h4>WhatsApp Groups</h4>
         </div>
-
         <div>
-            <h3>30% ↑</h3>
-            <p>Income Growth</p>
+            <i class="fas fa-trophy"></i>
+            <h4>Recognition Awards</h4>
+        </div>
+        <div>
+            <i class="fas fa-chart-line"></i>
+            <h4>Leaderboards</h4>
         </div>
     </div>
 </section>
 
+<!-- ================= FINAL CTA ================= -->
+
+<section class="final-cta">
+    <h2>Ready to Transform Your Agriculture?</h2>
+    <a href="#membership" class="btn-primary">Join AgriFit Today</a>
+</section>
 
 <!-- ================= FOOTER ================= -->
 
 <footer>
-    <div class="footer-content">
+    <div class="footer-grid">
+
         <div>
-            <h3>AgriFit</h3>
-            <p>Empowering Farmers. Strengthening FPOs. Building Agri Leaders.</p>
+            <h4>AgriFit</h4>
+            <p>Performance-based agricultural transformation ecosystem.</p>
         </div>
 
         <div>
-            <p>Phone: +91 7996213245</p>
-            <p>Davangere, Karnataka – 577005</p>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#membership">Membership</a></li>
+                <li><a href="#impact">Impact</a></li>
+            </ul>
         </div>
+
+        <div>
+            <h4>Contact</h4>
+            <p>Email: info@agrifit.in</p>
+            <p>Phone: +91 90000 00000</p>
+        </div>
+
     </div>
+
+    <p class="copyright">
+        © 2026 AgriFit. All rights reserved.
+    </p>
 </footer>
-
-
-<!-- ================= CONTACT MODAL ================= -->
-
-<div class="contact-form-bg" id="formBg">
-    <div class="contact-form">
-        <h3>Join AgriFit</h3>
-
-        <input type="text" placeholder="Your Name">
-        <input type="tel" placeholder="Your Phone Number">
-        <input type="text" placeholder="Your Location">
-
-        <button>Submit</button>
-        <button onclick="closeForm()">Cancel</button>
-    </div>
-</div>
-
-
-<!-- ================= WHATSAPP FLOAT ================= -->
-
-<a href="https://wa.me/917996213245" class="whatsapp-float" target="_blank">
-    WhatsApp
-</a>
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<script>
-
-function showCategory(category) {
-    document.querySelectorAll('.category-content')
-        .forEach(el => el.style.display = 'none');
-
-    document.getElementById(category).style.display = 'block';
-}
-
-function openForm() {
-    document.getElementById('formBg').style.display = 'flex';
-}
-
-function closeForm() {
-    document.getElementById('formBg').style.display = 'none';
-}
-
-</script>
 
 </body>
 </html>
