@@ -4,8 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+codex/improve-website-functionality-and-design-hlnbm7
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => navLinks.classList.remove('open'));
+
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+ main
     });
   }
 
@@ -13,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const role = form.dataset.registerForm;
+ codex/improve-website-functionality-and-design-hlnbm7
       const payload = Object.fromEntries(new FormData(form).entries());
       const entries = JSON.parse(localStorage.getItem('agrifitRegistrations') || '[]');
       entries.push({ role, payload, createdAt: new Date().toISOString() });
@@ -21,10 +27,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if (notice) {
         notice.style.display = 'block';
         notice.textContent = `Thanks! ${role} request recorded. Team AgriFit will contact you shortly.`;
+
+      const values = Object.fromEntries(new FormData(form).entries());
+      const registrations = JSON.parse(localStorage.getItem('agrifitRegistrations') || '[]');
+      registrations.push({ role, values, at: new Date().toISOString() });
+      localStorage.setItem('agrifitRegistrations', JSON.stringify(registrations));
+
+      const notice = form.parentElement.querySelector('.notice');
+      if (notice) {
+        notice.style.display = 'block';
+        notice.textContent = `Registration captured for ${role}. Our team will activate your dashboard within 24 hours.`;
+ main
       }
       form.reset();
     });
   });
+ codex/improve-website-functionality-and-design-hlnbm7
 
   const counters = document.querySelectorAll('.counter');
   const observer = new IntersectionObserver((entries, obs) => {
@@ -79,4 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
     setInterval(update, 60000);
   });
+
+ main
 });
