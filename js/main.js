@@ -1,20 +1,16 @@
 /* ======================================================
    AGRIFIT - PREMIUM INTERACTIVE SCRIPT
-   Version: 3.0
-   Author: AgriFit
+   Version: 4.0 (Production Ready)
 ====================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ======================================================
-       UTILITY FUNCTIONS
+       HELPER FUNCTIONS
     ====================================================== */
 
-    const select = (selector, all = false) => {
-        return all 
-            ? document.querySelectorAll(selector) 
-            : document.querySelector(selector);
-    };
+    const select = (selector, all = false) =>
+        all ? document.querySelectorAll(selector) : document.querySelector(selector);
 
     const debounce = (func, delay = 10) => {
         let timeout;
@@ -25,44 +21,61 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     /* ======================================================
-       MOBILE MENU TOGGLE WITH ANIMATION
+       MOBILE MENU
     ====================================================== */
 
     const toggle = select(".menu-toggle");
     const navLinks = select(".nav-links");
-    const navItems = select(".nav-links li", true);
 
     if (toggle && navLinks) {
         toggle.addEventListener("click", () => {
-
             navLinks.classList.toggle("active");
-
-            // Animate each link
-            navItems.forEach((link, index) => {
-                link.style.animation = navLinks.classList.contains("active")
-                    ? `fadeSlide 0.5s ease forwards ${index / 7 + 0.2}s`
-                    : "";
-            });
-
             toggle.classList.toggle("open");
         });
     }
 
     /* ======================================================
-       STICKY NAVBAR WITH SMART SHRINK EFFECT
+       SMOOTH SCROLL FOR INTERNAL LINKS
+    ====================================================== */
+
+    const internalLinks = select('a[href^="#"]', true);
+
+    internalLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            const targetId = this.getAttribute("href");
+            const target = document.querySelector(targetId);
+
+            if (target) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: "smooth"
+                });
+
+                if (navLinks.classList.contains("active")) {
+                    navLinks.classList.remove("active");
+                }
+            }
+        });
+    });
+
+    /* ======================================================
+       NAVBAR SCROLL EFFECT
     ====================================================== */
 
     const navbar = select(".navbar");
 
     const handleNavbarScroll = () => {
+        if (!navbar) return;
+
         if (window.scrollY > 80) {
-            navbar.style.background = "#0b3d25";
-            navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,0.15)";
-            navbar.style.padding = "15px 8%";
+            navbar.style.background = "rgba(11,61,37,0.95)";
+            navbar.style.padding = "14px 8%";
+            navbar.style.boxShadow = "0 8px 25px rgba(0,0,0,0.15)";
         } else {
-            navbar.style.background = "#0f5132";
+            navbar.style.background = "rgba(20,83,45,0.85)";
+            navbar.style.padding = "22px 8%";
             navbar.style.boxShadow = "none";
-            navbar.style.padding = "20px 8%";
         }
     };
 
@@ -73,24 +86,27 @@ document.addEventListener("DOMContentLoaded", () => {
     ====================================================== */
 
     const progressBar = document.createElement("div");
-    progressBar.style.position = "fixed";
-    progressBar.style.top = "0";
-    progressBar.style.left = "0";
-    progressBar.style.height = "4px";
-    progressBar.style.background = "#20c997";
-    progressBar.style.zIndex = "2000";
-    progressBar.style.width = "0%";
+    progressBar.style.cssText = `
+        position:fixed;
+        top:0;
+        left:0;
+        height:4px;
+        width:0%;
+        background:linear-gradient(90deg,#22c55e,#1f7a4d);
+        z-index:2000;
+        transition:width 0.1s ease;
+    `;
     document.body.appendChild(progressBar);
 
     window.addEventListener("scroll", () => {
         const scrollTop = window.scrollY;
-        const docHeight = document.body.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        progressBar.style.width = scrollPercent + "%";
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = (scrollTop / height) * 100;
+        progressBar.style.width = percent + "%";
     });
 
     /* ======================================================
-       ADVANCED COUNTER ANIMATION
+       COUNTER ANIMATION
     ====================================================== */
 
     const counters = select(".counter", true);
@@ -101,71 +117,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const counter = entry.target;
             const target = +counter.dataset.target;
-            let current = 0;
             const duration = 2000;
-            const increment = target / (duration / 16);
+            const startTime = performance.now();
 
-            const update = () => {
-                current += increment;
-                if (current < target) {
-                    counter.textContent = Math.ceil(current).toLocaleString();
-                    requestAnimationFrame(update);
+            const animate = (currentTime) => {
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const value = Math.floor(progress * target);
+                counter.textContent = value.toLocaleString();
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
                 } else {
                     counter.textContent = target.toLocaleString();
                 }
             };
 
-            update();
+            requestAnimationFrame(animate);
             observer.unobserve(counter);
         });
-    }, { threshold: 0.6 });
+    }, { threshold: 0.5 });
 
     counters.forEach(counter => counterObserver.observe(counter));
 
     /* ======================================================
-       PREMIUM SCROLL REVEAL WITH STAGGER
+       SCROLL REVEAL EFFECT
     ====================================================== */
 
     const revealElements = select(
-        ".path-card, .course-card, .testimonial-card, .pricing-card, .step, .community-grid div",
+        ".category-card, .membership-card, .vision-grid div, .impact-grid div, .contact-card",
         true
     );
 
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = "1";
                 entry.target.style.transform = "translateY(0)";
-                entry.target.style.transitionDelay = `${index * 0.1}s`;
+                entry.target.style.transition = "all 0.8s ease";
             }
         });
     }, { threshold: 0.15 });
 
     revealElements.forEach(el => {
         el.style.opacity = "0";
-        el.style.transform = "translateY(60px)";
-        el.style.transition = "all 0.8s cubic-bezier(0.5, 0, 0, 1)";
+        el.style.transform = "translateY(50px)";
         revealObserver.observe(el);
     });
 
     /* ======================================================
-       ACTIVE NAV LINK ON SCROLL (IMPROVED)
+       ACTIVE NAV LINK ON SCROLL
     ====================================================== */
 
     const sections = select("section", true);
-    const navLinksItems = select(".nav-links a", true);
+    const navItems = select(".nav-links a", true);
 
-    const activateNavLink = () => {
+    const activateNav = () => {
         let current = "";
 
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 150;
+            const sectionTop = section.offsetTop - 120;
             if (window.scrollY >= sectionTop) {
                 current = section.getAttribute("id");
             }
         });
 
-        navLinksItems.forEach(link => {
+        navItems.forEach(link => {
             link.classList.remove("active-link");
             if (link.getAttribute("href") === "#" + current) {
                 link.classList.add("active-link");
@@ -173,38 +189,47 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    window.addEventListener("scroll", debounce(activateNavLink, 20));
+    window.addEventListener("scroll", debounce(activateNav, 20));
 
     /* ======================================================
-       RIPPLE EFFECT FOR BUTTONS
+       BUTTON RIPPLE EFFECT
     ====================================================== */
 
-    const buttons = select(".btn-primary, .btn-secondary", true);
+    const buttons = select(".btn-primary, .btn-secondary, .btn-outline", true);
 
     buttons.forEach(button => {
         button.addEventListener("click", function (e) {
 
+            const rect = this.getBoundingClientRect();
             const circle = document.createElement("span");
             const diameter = Math.max(this.clientWidth, this.clientHeight);
             const radius = diameter / 2;
 
             circle.style.width = circle.style.height = `${diameter}px`;
-            circle.style.left = `${e.clientX - this.offsetLeft - radius}px`;
-            circle.style.top = `${e.clientY - this.offsetTop - radius}px`;
-            circle.classList.add("ripple");
+            circle.style.left = `${e.clientX - rect.left - radius}px`;
+            circle.style.top = `${e.clientY - rect.top - radius}px`;
+            circle.style.position = "absolute";
+            circle.style.borderRadius = "50%";
+            circle.style.background = "rgba(255,255,255,0.4)";
+            circle.style.transform = "scale(0)";
+            circle.style.animation = "ripple 0.6s linear";
+            circle.style.pointerEvents = "none";
 
-            const ripple = this.getElementsByClassName("ripple")[0];
+            const ripple = this.querySelector(".ripple");
             if (ripple) ripple.remove();
 
+            circle.classList.add("ripple");
+            this.style.position = "relative";
+            this.style.overflow = "hidden";
             this.appendChild(circle);
         });
     });
 
     /* ======================================================
-       PRICING CARD 3D HOVER EFFECT
+       PRICING CARD 3D EFFECT (SMOOTHED)
     ====================================================== */
 
-    const pricingCards = select(".pricing-card", true);
+    const pricingCards = select(".membership-card", true);
 
     pricingCards.forEach(card => {
 
@@ -213,29 +238,26 @@ document.addEventListener("DOMContentLoaded", () => {
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
+            const rotateX = ((y / rect.height) - 0.5) * 8;
+            const rotateY = ((x / rect.width) - 0.5) * 8;
 
-            const rotateX = ((y - centerY) / centerY) * 5;
-            const rotateY = ((x - centerX) / centerX) * 5;
-
-            card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+            card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
         });
 
         card.addEventListener("mouseleave", () => {
-            card.style.transform = "rotateX(0) rotateY(0) scale(1)";
+            card.style.transform = "rotateX(0) rotateY(0)";
         });
     });
 
     /* ======================================================
-       PARALLAX EFFECT (HERO)
+       HERO PARALLAX
     ====================================================== */
 
     const hero = select(".hero");
 
     if (hero) {
         window.addEventListener("scroll", () => {
-            hero.style.backgroundPositionY = window.scrollY * 0.5 + "px";
+            hero.style.backgroundPositionY = window.scrollY * 0.4 + "px";
         });
     }
 
@@ -245,18 +267,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const backToTop = document.createElement("button");
     backToTop.innerHTML = "↑";
-    backToTop.style.position = "fixed";
-    backToTop.style.bottom = "40px";
-    backToTop.style.right = "40px";
-    backToTop.style.padding = "12px 16px";
-    backToTop.style.borderRadius = "50%";
-    backToTop.style.border = "none";
-    backToTop.style.background = "#198754";
-    backToTop.style.color = "#fff";
-    backToTop.style.cursor = "pointer";
-    backToTop.style.display = "none";
-    backToTop.style.zIndex = "2000";
-    backToTop.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)";
+    backToTop.style.cssText = `
+        position:fixed;
+        bottom:30px;
+        right:30px;
+        padding:12px 16px;
+        border-radius:50%;
+        border:none;
+        background:#1f7a4d;
+        color:#fff;
+        font-size:18px;
+        cursor:pointer;
+        display:none;
+        z-index:2000;
+        box-shadow:0 10px 25px rgba(0,0,0,0.2);
+        transition:all 0.3s ease;
+    `;
     document.body.appendChild(backToTop);
 
     window.addEventListener("scroll", () => {
