@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgriFit Dashboard Intelligence Center</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/main.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo"><span class="af-logo">AF</span><span><strong>AgriFit</strong><small>Train. Transform. Grow.</small></span></a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboards</a></li>
+        <li><a href="scheme-hub.html">Scheme Hub</a></li>
+        <li><a href="programs.html">Programs</a></li>
+      </ul>
+    </nav>
+    <button class="menu-toggle">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="surface">
+    <div class="container">
+      <p class="eyebrow">Dashboard Intelligence Center</p>
+      <h2>Real-time performance visibility across farmers, FPOs and graduates</h2>
+      <div class="dashboard-kpi-grid">
+        <article class="kpi-card"><p>Total Members</p><h3 class="counter" data-target="3240">0</h3><span>+16% vs last quarter</span></article>
+        <article class="kpi-card"><p>FPOs Onboarded</p><h3 class="counter" data-target="228">0</h3><span>+12 active this month</span></article>
+        <article class="kpi-card"><p>Acres Impacted</p><h3 class="counter" data-target="14820">0</h3><span>Across 42 districts</span></article>
+        <article class="kpi-card"><p>Training Hours</p><h3 class="counter" data-target="6320">0</h3><span>Avg completion 78%</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container dashboard-layout">
+      <article class="panel-card">
+        <div class="panel-head"><h3>FPO Progress vs Target</h3><small>Current quarter</small></div>
+
+        <div class="metric-item"><div><strong>Total Members</strong><p>420 / 500</p></div><span>84%</span></div>
+        <div class="progress-track"><span style="width:84%"></span></div>
+
+        <div class="metric-item"><div><strong>Members in Programs</strong><p>282 / 360</p></div><span>78%</span></div>
+        <div class="progress-track"><span style="width:78%"></span></div>
+
+        <div class="metric-item"><div><strong>Training Hours Completed</strong><p>96 / 140 hrs</p></div><span>69%</span></div>
+        <div class="progress-track"><span style="width:69%"></span></div>
+
+        <div class="metric-item"><div><strong>Revenue Projection</strong><p>₹1.35 Cr / ₹1.8 Cr</p></div><span>75%</span></div>
+        <div class="progress-track"><span style="width:75%"></span></div>
+      </article>
+
+      <article class="panel-card">
+        <div class="panel-head"><h3>Monthly Enrollment Trend</h3><small>Jan - Jun</small></div>
+        <div class="bar-chart">
+          <div class="bar-col"><span style="height:32%"></span><p>Jan</p></div>
+          <div class="bar-col"><span style="height:44%"></span><p>Feb</p></div>
+          <div class="bar-col"><span style="height:58%"></span><p>Mar</p></div>
+          <div class="bar-col"><span style="height:63%"></span><p>Apr</p></div>
+          <div class="bar-col"><span style="height:76%"></span><p>May</p></div>
+          <div class="bar-col"><span style="height:88%"></span><p>Jun</p></div>
+        </div>
+        <p class="panel-note">Trend insight: consistent growth after FPO leadership campaign launch.</p>
+      </article>
+
+      <article class="panel-card">
+        <div class="panel-head"><h3>Role Distribution</h3><small>Current active members</small></div>
+        <div class="role-split">
+          <div><strong>Farmers</strong><p>1,980</p><div class="progress-track"><span style="width:61%"></span></div></div>
+          <div><strong>FPO Representatives</strong><p>640</p><div class="progress-track"><span style="width:20%"></span></div></div>
+          <div><strong>Agri Graduates</strong><p>420</p><div class="progress-track"><span style="width:13%"></span></div></div>
+          <div><strong>Partners & Dealers</strong><p>200</p><div class="progress-track"><span style="width:6%"></span></div></div>
+        </div>
+      </article>
+
+      <article class="panel-card">
+        <div class="panel-head"><h3>Scheme Application Funnel</h3><small>FPO support desk</small></div>
+        <div class="funnel-grid">
+          <div><h4>126</h4><p>Eligibility checks</p></div>
+          <div><h4>94</h4><p>Documents submitted</p></div>
+          <div><h4>68</h4><p>Applications filed</p></div>
+          <div><h4>31</h4><p>Approved</p></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="surface">
+    <div class="container">
+      <div class="row-between">
+        <div>
+          <p class="eyebrow">Detailed Snapshot</p>
+          <h2>Operational metrics with targets</h2>
+        </div>
+        <a href="fpo.html" class="btn btn-primary">Open FPO Journey</a>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Current</th>
+              <th>Target</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Total Members</td><td>420</td><td>500</td><td>On Track</td></tr>
+            <tr><td>Members Enrolled in Programs</td><td>282</td><td>360</td><td>Improving</td></tr>
+            <tr><td>Training Hours Completed</td><td>96 hrs</td><td>140 hrs</td><td>Needs Push</td></tr>
+            <tr><td>Schemes Applied</td><td>6</td><td>10</td><td>On Track</td></tr>
+            <tr><td>Annual Revenue Projection</td><td>₹1.35 Cr</td><td>₹1.8 Cr</td><td>Improving</td></tr>
+            <tr><td>Consultations Booked</td><td>24</td><td>36</td><td>On Track</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <p>AgriFit Dashboard Blueprint</p>
+    <p><a href="index.html">Back to Home</a></p>
+  </div>
+</footer>
+</body>
+</html>
