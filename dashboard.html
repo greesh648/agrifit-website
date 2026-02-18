@@ -28,7 +28,8 @@
   <section class="surface">
     <div class="container">
       <p class="eyebrow">Dashboard Intelligence Center</p>
-      <h2>Real-time performance visibility across farmers, FPOs and graduates</h2>
+      <h2>Visual performance command center</h2>
+      <p class="lead">Track growth trends, scheme conversion, role distribution, and operational targets with clear visuals.</p>
       <div class="dashboard-kpi-grid">
         <article class="kpi-card"><p>Total Members</p><h3 class="counter" data-target="3240">0</h3><span>+16% vs last quarter</span></article>
         <article class="kpi-card"><p>FPOs Onboarded</p><h3 class="counter" data-target="228">0</h3><span>+12 active this month</span></article>
@@ -40,7 +41,48 @@
 
   <section>
     <div class="container dashboard-layout">
+      <article class="panel-card span-2">
+        <div class="panel-head"><h3>Enrollment Trend (Jan–Jun)</h3><small>Monthly new enrollments</small></div>
+        <svg class="trend-svg" viewBox="0 0 640 220" role="img" aria-label="Enrollment trend chart">
+          <defs>
+            <linearGradient id="lineGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#0b6b3a" stop-opacity="0.35" />
+              <stop offset="100%" stop-color="#0b6b3a" stop-opacity="0.05" />
+            </linearGradient>
+          </defs>
+          <polyline fill="url(#lineGrad)" stroke="none" points="40,180 120,150 200,132 280,112 360,95 440,72 520,48 600,48 600,200 40,200" />
+          <polyline fill="none" stroke="#0b6b3a" stroke-width="4" points="40,180 120,150 200,132 280,112 360,95 440,72 520,48" />
+          <g class="axis-labels">
+            <text x="35" y="212">Jan</text><text x="115" y="212">Feb</text><text x="195" y="212">Mar</text>
+            <text x="275" y="212">Apr</text><text x="355" y="212">May</text><text x="435" y="212">Jun</text>
+          </g>
+        </svg>
+      </article>
+
       <article class="panel-card">
+        <div class="panel-head"><h3>Role Distribution</h3><small>Active users</small></div>
+        <div class="donut-wrap">
+          <div class="donut-chart" aria-label="Role distribution donut"></div>
+          <ul class="donut-legend">
+            <li><span class="dot dot-farm"></span> Farmers (61%)</li>
+            <li><span class="dot dot-fpo"></span> FPO (20%)</li>
+            <li><span class="dot dot-grad"></span> Graduates (13%)</li>
+            <li><span class="dot dot-part"></span> Partners (6%)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="panel-card">
+        <div class="panel-head"><h3>Scheme Funnel</h3><small>This quarter</small></div>
+        <div class="funnel-steps">
+          <div class="step s1"><strong>126</strong><span>Eligibility</span></div>
+          <div class="step s2"><strong>94</strong><span>Documents</span></div>
+          <div class="step s3"><strong>68</strong><span>Applied</span></div>
+          <div class="step s4"><strong>31</strong><span>Approved</span></div>
+        </div>
+      </article>
+
+      <article class="panel-card span-2">
         <div class="panel-head"><h3>FPO Progress vs Target</h3><small>Current quarter</small></div>
 
         <div class="metric-item"><div><strong>Total Members</strong><p>420 / 500</p></div><span>84%</span></div>
@@ -55,39 +97,6 @@
         <div class="metric-item"><div><strong>Revenue Projection</strong><p>₹1.35 Cr / ₹1.8 Cr</p></div><span>75%</span></div>
         <div class="progress-track"><span style="width:75%"></span></div>
       </article>
-
-      <article class="panel-card">
-        <div class="panel-head"><h3>Monthly Enrollment Trend</h3><small>Jan - Jun</small></div>
-        <div class="bar-chart">
-          <div class="bar-col"><span style="height:32%"></span><p>Jan</p></div>
-          <div class="bar-col"><span style="height:44%"></span><p>Feb</p></div>
-          <div class="bar-col"><span style="height:58%"></span><p>Mar</p></div>
-          <div class="bar-col"><span style="height:63%"></span><p>Apr</p></div>
-          <div class="bar-col"><span style="height:76%"></span><p>May</p></div>
-          <div class="bar-col"><span style="height:88%"></span><p>Jun</p></div>
-        </div>
-        <p class="panel-note">Trend insight: consistent growth after FPO leadership campaign launch.</p>
-      </article>
-
-      <article class="panel-card">
-        <div class="panel-head"><h3>Role Distribution</h3><small>Current active members</small></div>
-        <div class="role-split">
-          <div><strong>Farmers</strong><p>1,980</p><div class="progress-track"><span style="width:61%"></span></div></div>
-          <div><strong>FPO Representatives</strong><p>640</p><div class="progress-track"><span style="width:20%"></span></div></div>
-          <div><strong>Agri Graduates</strong><p>420</p><div class="progress-track"><span style="width:13%"></span></div></div>
-          <div><strong>Partners & Dealers</strong><p>200</p><div class="progress-track"><span style="width:6%"></span></div></div>
-        </div>
-      </article>
-
-      <article class="panel-card">
-        <div class="panel-head"><h3>Scheme Application Funnel</h3><small>FPO support desk</small></div>
-        <div class="funnel-grid">
-          <div><h4>126</h4><p>Eligibility checks</p></div>
-          <div><h4>94</h4><p>Documents submitted</p></div>
-          <div><h4>68</h4><p>Applications filed</p></div>
-          <div><h4>31</h4><p>Approved</p></div>
-        </div>
-      </article>
     </div>
   </section>
 
@@ -96,7 +105,7 @@
       <div class="row-between">
         <div>
           <p class="eyebrow">Detailed Snapshot</p>
-          <h2>Operational metrics with targets</h2>
+          <h2>Operational metrics with target status</h2>
         </div>
         <a href="fpo.html" class="btn btn-primary">Open FPO Journey</a>
       </div>
