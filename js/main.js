@@ -4,18 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
- codex/improve-website-functionality-and-design-27fnno
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => navLinks.classList.remove('open'));
-
-codex/improve-website-functionality-and-design-hlnbm7
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navLinks.classList.remove('open'));
-
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => navLinks.classList.remove('open'));
- main
- main
     });
   }
 
@@ -23,10 +13,6 @@ codex/improve-website-functionality-and-design-hlnbm7
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const role = form.dataset.registerForm;
- codex/improve-website-functionality-and-design-27fnno
-
- codex/improve-website-functionality-and-design-hlnbm7
- main
       const payload = Object.fromEntries(new FormData(form).entries());
       const entries = JSON.parse(localStorage.getItem('agrifitRegistrations') || '[]');
       entries.push({ role, payload, createdAt: new Date().toISOString() });
@@ -35,28 +21,10 @@ codex/improve-website-functionality-and-design-hlnbm7
       if (notice) {
         notice.style.display = 'block';
         notice.textContent = `Thanks! ${role} request recorded. Team AgriFit will contact you shortly.`;
- codex/improve-website-functionality-and-design-27fnno
-
-
-      const values = Object.fromEntries(new FormData(form).entries());
-      const registrations = JSON.parse(localStorage.getItem('agrifitRegistrations') || '[]');
-      registrations.push({ role, values, at: new Date().toISOString() });
-      localStorage.setItem('agrifitRegistrations', JSON.stringify(registrations));
-
-      const notice = form.parentElement.querySelector('.notice');
-      if (notice) {
-        notice.style.display = 'block';
-        notice.textContent = `Registration captured for ${role}. Our team will activate your dashboard within 24 hours.`;
- main
- main
       }
       form.reset();
     });
   });
- codex/improve-website-functionality-and-design-27fnno
-
- codex/improve-website-functionality-and-design-hlnbm7
- main
 
   const counters = document.querySelectorAll('.counter');
   const observer = new IntersectionObserver((entries, obs) => {
@@ -111,9 +79,4 @@ codex/improve-website-functionality-and-design-hlnbm7
     update();
     setInterval(update, 60000);
   });
- codex/improve-website-functionality-and-design-27fnno
-
-
- main
- main
 });
