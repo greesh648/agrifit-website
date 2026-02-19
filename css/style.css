@@ -71,7 +71,10 @@ h3 { font-size: 1.08rem; margin-bottom: .35rem; }
 .path-card { transition: transform .2s ease, box-shadow .2s ease; }
 .path-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(12,45,28,.18); }
 
+<<<<<< codex/improve-website-functionality-and-design-wmvkyw
 
+=======
+>>>>>> main
 .visual-strip { display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; }
 .visual-tile { display:grid; grid-template-columns: 130px 1fr; gap:.8rem; align-items:center; background:#fff; border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow); padding:.6rem; transition: transform .22s ease, box-shadow .22s ease; }
 .visual-tile img { width:100%; height:88px; object-fit:cover; border-radius:10px; animation: floatY 4.2s ease-in-out infinite; }
@@ -82,7 +85,10 @@ h3 { font-size: 1.08rem; margin-bottom: .35rem; }
 .click-card:hover { transform: translateY(-4px); }
 @keyframes floatY { 0%,100% { transform: translateY(0);} 50% { transform: translateY(-7px);} }
 
+<<<<<< codex/improve-website-functionality-and-design-wmvkyw
 
+=======
+>>>>>> main
 .row-between { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
 .filter-row { display: flex; gap: .6rem; }
 select, input, textarea { border: 1px solid #cad8cf; border-radius: 10px; padding: .6rem .7rem; font: inherit; }
@@ -132,8 +138,11 @@ th { background: #edf5f0; }
   .cta-band, .footer-inner { flex-direction: column; align-items: flex-start; }
 }
 
+<<<<<< codex/improve-website-functionality-and-design-wmvkyw
 
 
+=======
+>>>>>> main
 /* Dashboard visuals */
 .dashboard-kpi-grid {
   display: grid;
@@ -261,7 +270,10 @@ th { background: #edf5f0; }
   .donut-wrap { grid-template-columns: 1fr; justify-items: center; }
 }
 
+<<<<<< codex/improve-website-functionality-and-design-wmvkyw
 
+=======
+>>>>>> main
 /* Course flow */
 .course-toolbar {
   display: grid;
