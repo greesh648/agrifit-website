@@ -101,9 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const courseData = [
+
+    { id:'crop-1', sector:'crop', title:'Certificate Course in Plant Breeding', level:'Intermediate', mode:'Online', duration:'60 Hours', fee:'Free', provider:'Reliance Foundation Skilling Academy', language:'English', enrolled:'15142', image:'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1100&q=80', outcomes:'Plant breeding essentials, marker-assisted selection, practical crop improvement workflows.', benefits:['Seed selection mastery','Higher yield planning','Field trial skills'] },
+    { id:'crop-2', sector:'crop', title:'Soil Health & Nutrient Management', level:'Beginner', mode:'Hybrid', duration:'6 Weeks', fee:'₹1,499', provider:'AgriFit Academy', language:'English + Hindi', enrolled:'6842', image:'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1100&q=80', outcomes:'Soil testing, nutrient plans, cost control and seasonal recommendation design.', benefits:['Soil report reading','Nutrient budgeting','Input cost reduction'] },
+    { id:'livestock-1', sector:'livestock', title:'Dairy Productivity Improvement', level:'Beginner', mode:'Online', duration:'5 Weeks', fee:'₹1,999', provider:'AgriFit Dairy Cell', language:'English', enrolled:'3920', image:'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1100&q=80', outcomes:'Feed planning, milk yield tracking and disease prevention protocol.', benefits:['Milk yield optimization','Animal health protocol','Farm profitability'] },
+
     { id:'crop-1', sector:'crop', title:'Certificate Course in Plant Breeding', level:'Intermediate', mode:'Online', duration:'60 Hours', fee:'Free', provider:'Reliance Foundation Skilling Academy', language:'English', enrolled:'15142', outcomes:'Plant breeding essentials, marker-assisted selection, practical crop improvement workflows.' },
     { id:'crop-2', sector:'crop', title:'Soil Health & Nutrient Management', level:'Beginner', mode:'Hybrid', duration:'6 Weeks', fee:'₹1,499', provider:'AgriFit Academy', language:'English + Hindi', enrolled:'6842', outcomes:'Soil testing, nutrient plans, cost control and seasonal recommendation design.' },
     { id:'livestock-1', sector:'livestock', title:'Dairy Productivity Improvement', level:'Beginner', mode:'Online', duration:'5 Weeks', fee:'₹1,999', provider:'AgriFit Dairy Cell', language:'English', enrolled:'3920', outcomes:'Feed planning, milk yield tracking and disease prevention protocol.' },
+
     { id:'fpo-1', sector:'fpo', title:'FPO Governance & Compliance Leader', level:'Advanced', mode:'Hybrid', duration:'8 Weeks', fee:'₹4,500', provider:'AgriFit FPO School', language:'English', enrolled:'1240', outcomes:'Board governance, compliance calendar, financial controls and MIS practices.' },
     { id:'business-1', sector:'business', title:'Agri Enterprise Revenue Accelerator', level:'Advanced', mode:'Offline', duration:'10 Weeks', fee:'₹7,500', provider:'AgriFit Business Lab', language:'English', enrolled:'980', outcomes:'Revenue model design, procurement strategy and market expansion planning.' },
     { id:'graduate-1', sector:'graduate', title:'Agri Graduate Industry Readiness Bootcamp', level:'Intermediate', mode:'Online', duration:'6 Weeks', fee:'₹2,999', provider:'AgriFit Professional Track', language:'English', enrolled:'2100', outcomes:'Field diagnostics, communication, reporting and interview project portfolio.' },
@@ -165,7 +171,13 @@ document.addEventListener('DOMContentLoaded', () => {
           <h2>${c.title}</h2>
           <p class="small">${c.provider}</p>
           <p class="course-meta">${c.fee} · ${c.duration} · ${c.enrolled}+ enrolled · ${c.language}</p>
+
+          <img class='rounded-img' src='${c.image || 'assets/images/farm.jpg'}' alt='${c.title}' />
           <p>${c.outcomes}</p>
+          <ul class='check-list'>${(c.benefits || ['Hands-on assignments','Mentor support','Certificate of completion']).map(b => `<li>${b}</li>`).join('')}</ul>
+
+          <p>${c.outcomes}</p>
+
         </div>
         <div class="course-enroll card snapshot">
           <h3>Enroll in this Course</h3>
@@ -198,4 +210,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const href = a.getAttribute('href');
     if (href === current) a.classList.add('active');
   });
+
 })();
+
+
+function googleTranslateElementInit() {
+  if (typeof google !== 'undefined' && google.translate) {
+    new google.translate.TranslateElement({pageLanguage:'en', includedLanguages:'en,hi,kn,ta,te,ml,mr,bn,gu,pa,ur,es,fr,de,ar,pt,ru,zh-CN,ja'}, 'google_translate_element');
+  }
+}
+
+
+const renderLeadsTable = () => {
+  const body = document.getElementById('leadsTableBody');
+  if (!body) return;
+  const rows = JSON.parse(localStorage.getItem('agrifitRegistrations') || '[]');
+  body.innerHTML = rows.map(r => `<tr><td>${new Date(r.createdAt).toLocaleString()}</td><td>${r.role||''}</td><td>${r.payload?.name||''}</td><td>${r.payload?.phone||''}</td><td>${r.payload?.email||''}</td></tr>`).join('') || '<tr><td colspan="5">No registrations found.</td></tr>';
+  document.getElementById('downloadLeadsCsv')?.addEventListener('click', () => {
+    const header=['Date','Type','Name','Phone','Email'];
+    const csv=[header.join(',')].concat(rows.map(r=>[
+      new Date(r.createdAt).toISOString(), r.role||'', r.payload?.name||'', r.payload?.phone||'', r.payload?.email||''
+    ].map(v=>`"${String(v).replaceAll('"','""')}"`).join(','))).join('\n');
+    const blob=new Blob([csv],{type:'text/csv'}); const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='agrifit-leads.csv'; a.click();
+  });
+  document.getElementById('clearLeads')?.addEventListener('click',()=>{localStorage.removeItem('agrifitRegistrations'); location.reload();});
+};
+
+const initPaymentLinks = () => {
+  const plan = new URLSearchParams(location.search).get('plan') || 'starter';
+  const razor = document.getElementById('razorpayLink');
+  const stripe = document.getElementById('stripeLink');
+  if (!razor || !stripe) return;
+  const razorMap = {starter:'https://rzp.io/l/your-starter-plan', pro:'https://rzp.io/l/your-pro-plan', global:'https://rzp.io/l/your-global-plan'};
+  const stripeMap = {starter:'https://buy.stripe.com/your-starter-plan', pro:'https://buy.stripe.com/your-pro-plan', global:'https://buy.stripe.com/your-global-plan'};
+  razor.href = razorMap[plan] || razorMap.starter;
+  stripe.href = stripeMap[plan] || stripeMap.starter;
+};
+
+const injectSevaBot = () => {
+  if (document.getElementById('sevaBot')) return;
+  const box = document.createElement('div');
+  box.id = 'sevaBot';
+  box.innerHTML = `<button class="seva-toggle">AgriFit Seva</button><div class="seva-panel"><h4>AgriFit Seva</h4><p>Need help with course, payment, or schemes?</p><a href="https://wa.me/917996213245?text=Hi%20AgriFit%20Seva%2C%20please%20guide%20me." target="_blank" rel="noopener">Chat on WhatsApp</a><a href="tel:+917996213245">Call 7996213245</a></div>`;
+  document.body.appendChild(box);
+  box.querySelector('.seva-toggle').addEventListener('click',()=>box.classList.toggle('open'));
+};
+
+renderLeadsTable();
+initPaymentLinks();
+injectSevaBot();
+
+})();
+
