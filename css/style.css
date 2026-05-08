@@ -258,16 +258,18 @@ th { background: #edf5f0; }
 
 @media (max-width: 640px) {
   .dashboard-kpi-grid { grid-template-columns: 1fr; }
-  .donut-wrap { grid-template-columns: 1fr; justify-items: center; }
 }
 
-
-/* Course flow */
 .course-toolbar {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 1.2fr .7fr .7fr;
   gap: .7rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
+}
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 .course-card {
   background: #fff;
@@ -275,26 +277,50 @@ th { background: #edf5f0; }
   border-radius: 14px;
   box-shadow: var(--shadow);
   padding: 1rem;
-  display: grid;
-  gap: .45rem;
+}
+.course-card .small { color: var(--text-700); margin-bottom: .35rem; }
+.course-card h3 { margin-bottom: .35rem; }
+
+.course-empty {
+  display: none;
+  margin-top: 1rem;
+  color: var(--text-700);
 }
 .course-hero {
-  margin-top: 1rem;
   display: grid;
   grid-template-columns: 1.2fr .8fr;
   gap: 1rem;
-  align-items: start;
 }
 .course-meta {
-  color: var(--green-700);
-  font-weight: 600;
-  margin: .35rem 0 .6rem;
+  color: var(--text-700);
+  margin: .35rem 0 .7rem;
+}
+.course-enroll form {
+  display: grid;
+  gap: .6rem;
+}
+.course-enroll label {
+  display: grid;
+  gap: .3rem;
+  font-size: .9rem;
 }
 .course-tabs {
-  margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: .8rem;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.snapshot {
+  margin-top: 1rem;
+}
+
+@media (max-width: 1060px) {
+  .course-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 680px) {
+  .course-grid { grid-template-columns: 1fr; }
+  .course-toolbar { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 1060px) {
