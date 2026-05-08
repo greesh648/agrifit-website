@@ -3,9 +3,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelector('.nav-links');
 
   if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+    document.addEventListener('click', (event) => {
+      if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
@@ -181,3 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCourseCatalog();
   renderCourseDetail();
 });
+
+
+(() => {
+  const current = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (href === current) a.classList.add('active');
+  });
+})();
