@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpen = navLinks.classList.toggle('open');
       menuToggle.setAttribute('aria-expanded', String(isOpen));
     });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+
     navLinks.querySelectorAll('a').forEach(link => {
+
       link.addEventListener('click', () => navLinks.classList.remove('open'));
     });
     document.addEventListener('click', (event) => {
@@ -18,7 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+
+  document.querySelectorAll('form[data-register-form]').forEach((form) => {
+
   document.querySelectorAll('form[data-register-form]').forEach(form => {
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const role = form.dataset.registerForm;
@@ -34,6 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
       form.reset();
     });
   });
+
+
+  const courseData = [
+    { id: 'crop-1', sector: 'crop', emoji: '🌾', title: 'Plant Breeding Mastery', level: 'Intermediate', mode: 'Online', duration: '60 Hours', fee: 'Free', provider: 'AgriFit Academy', language: 'English', enrolled: '15142', image: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1100&q=80', outcomes: 'Plant breeding essentials, marker-assisted selection, practical crop improvement workflows.', benefits: ['Seed selection mastery', 'Higher yield planning', 'Field trial skills'] },
+    { id: 'crop-2', sector: 'crop', emoji: '🧪', title: 'Soil Health & Nutrient Management', level: 'Beginner', mode: 'Hybrid', duration: '6 Weeks', fee: '₹1,499', provider: 'AgriFit Academy', language: 'English + Hindi', enrolled: '6842', image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1100&q=80', outcomes: 'Soil testing, nutrient plans, cost control and seasonal recommendation design.', benefits: ['Soil report reading', 'Nutrient budgeting', 'Input cost reduction'] },
+    { id: 'livestock-1', sector: 'livestock', emoji: '🐄', title: 'Dairy Productivity Improvement', level: 'Beginner', mode: 'Online', duration: '5 Weeks', fee: '₹1,999', provider: 'AgriFit Dairy Cell', language: 'English', enrolled: '3920', image: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1100&q=80', outcomes: 'Feed planning, milk yield tracking and disease prevention protocol.', benefits: ['Milk yield optimization', 'Animal health protocol', 'Farm profitability'] },
+    { id: 'fpo-1', sector: 'fpo', emoji: '🏢', title: 'FPO Governance & Compliance Leader', level: 'Advanced', mode: 'Hybrid', duration: '8 Weeks', fee: '₹4,500', provider: 'AgriFit FPO School', language: 'English', enrolled: '1240', outcomes: 'Board governance, compliance calendar, financial controls and MIS practices.' },
 
   const counters = document.querySelectorAll('.counter');
   const observer = new IntersectionObserver((entries, obs) => {
@@ -114,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { id:'business-1', sector:'business', title:'Agri Enterprise Revenue Accelerator', level:'Advanced', mode:'Offline', duration:'10 Weeks', fee:'₹7,500', provider:'AgriFit Business Lab', language:'English', enrolled:'980', outcomes:'Revenue model design, procurement strategy and market expansion planning.' },
     { id:'graduate-1', sector:'graduate', title:'Agri Graduate Industry Readiness Bootcamp', level:'Intermediate', mode:'Online', duration:'6 Weeks', fee:'₹2,999', provider:'AgriFit Professional Track', language:'English', enrolled:'2100', outcomes:'Field diagnostics, communication, reporting and interview project portfolio.' },
     { id:'scheme-1', sector:'scheme', title:'Scheme Documentation & Approval Mastery', level:'Beginner', mode:'Online', duration:'4 Weeks', fee:'Free', provider:'AgriFit Scheme Desk', language:'English + Hindi', enrolled:'5120', outcomes:'Eligibility checks, document kits, application flow and follow-up systems.' }
+
   ];
 
   const renderCourseCatalog = () => {
@@ -121,8 +137,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!grid) return;
     const title = document.getElementById('courseCatalogTitle');
     const empty = document.getElementById('courseEmpty');
+
+    const sector = new URLSearchParams(window.location.search).get('sector') || 'all';
+
     const query = new URLSearchParams(window.location.search);
     const sector = query.get('sector') || 'all';
+
     const searchEl = document.getElementById('courseSearch');
     const levelEl = document.getElementById('courseLevel');
     const modeEl = document.getElementById('courseMode');
@@ -133,7 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const search = (searchEl?.value || '').toLowerCase().trim();
       const level = levelEl?.value || 'all';
       const mode = modeEl?.value || 'all';
+
+      const filtered = courseData.filter((c) => {
+
       const filtered = courseData.filter(c => {
+
         const sectorOk = sector === 'all' || c.sector === sector;
         const levelOk = level === 'all' || c.level === level;
         const modeOk = mode === 'all' || c.mode === mode;
@@ -141,8 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return sectorOk && levelOk && modeOk && searchOk;
       });
 
+
+      grid.innerHTML = filtered.map((c) => `
+        <article class="course-card">
+          <div class="course-cartoon">${c.emoji || '🌱'}</div>
+
       grid.innerHTML = filtered.map(c => `
         <article class="course-card">
+
           <p class="small">${c.mode} · ${c.level}</p>
           <h3>${c.title}</h3>
           <p class="small">${c.provider}</p>
@@ -154,8 +184,13 @@ document.addEventListener('DOMContentLoaded', () => {
       empty.style.display = filtered.length ? 'none' : 'block';
     };
 
+
+    [searchEl, levelEl, modeEl].forEach((el) => el?.addEventListener('input', paint));
+    [levelEl, modeEl].forEach((el) => el?.addEventListener('change', paint));
+
     [searchEl, levelEl, modeEl].forEach(el => el?.addEventListener('input', paint));
     [levelEl, modeEl].forEach(el => el?.addEventListener('change', paint));
+
     paint();
   };
 
@@ -163,11 +198,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('courseDetail');
     if (!wrapper) return;
     const id = new URLSearchParams(window.location.search).get('id');
+
+    const c = courseData.find((x) => x.id === id) || courseData[0];
+
     const c = courseData.find(x => x.id === id) || courseData[0];
+
     wrapper.innerHTML = `
       <div class="course-hero">
         <div>
           <p class="eyebrow">${c.mode} · ${c.level}</p>
+
+          <h2>${c.emoji || '🌱'} ${c.title}</h2>
+          <p class="small">${c.provider}</p>
+          <p class="course-meta">${c.fee} · ${c.duration} · ${c.enrolled}+ enrolled · ${c.language}</p>
+          <img class='rounded-img' src='${c.image || 'assets/images/farm.jpg'}' alt='${c.title}' />
+          <p>${c.outcomes}</p>
+          <ul class='check-list'>${(c.benefits || ['Hands-on assignments', 'Mentor support', 'Certificate of completion']).map((b) => `<li>${b}</li>`).join('')}</ul>
+
           <h2>${c.title}</h2>
           <p class="small">${c.provider}</p>
           <p class="course-meta">${c.fee} · ${c.duration} · ${c.enrolled}+ enrolled · ${c.language}</p>
@@ -177,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <ul class='check-list'>${(c.benefits || ['Hands-on assignments','Mentor support','Certificate of completion']).map(b => `<li>${b}</li>`).join('')}</ul>
 
           <p>${c.outcomes}</p>
+
 
         </div>
         <div class="course-enroll card snapshot">
@@ -190,6 +238,116 @@ document.addEventListener('DOMContentLoaded', () => {
           </form>
           <div class="notice"></div>
         </div>
+
+      </div>`;
+  };
+
+  const initPayment = () => {
+    const form = document.getElementById('paymentForm');
+    if (!form) return;
+    const status = document.getElementById('paymentStatus');
+    const plan = new URLSearchParams(window.location.search).get('plan') || 'starter';
+    const planLabel = document.getElementById('planLabel');
+    if (planLabel) planLabel.textContent = plan.toUpperCase();
+
+    const planAmount = { starter: 149900, pro: 299900, global: 599900 };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.style.display = 'block';
+      status.textContent = 'Creating secure payment order...';
+      try {
+        const config = await fetch('http://localhost:8787/api/config').then((r) => r.json());
+        const order = await fetch('http://localhost:8787/api/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount: planAmount[plan] || planAmount.starter, receipt: `agrifit_${Date.now()}` }),
+        }).then((r) => r.json());
+
+        if (!order.id || !window.Razorpay) throw new Error('Razorpay init failed. Start API server and check keys.');
+
+        const fd = new FormData(form);
+        const opts = {
+          key: config.keyId,
+          amount: order.amount,
+          currency: order.currency,
+          name: 'AgriFit',
+          description: `${plan.toUpperCase()} Membership`,
+          order_id: order.id,
+          prefill: { name: fd.get('name'), email: fd.get('email'), contact: fd.get('mobile') },
+          theme: { color: '#0b6b3a' },
+          handler: async function (response) {
+            const verify = await fetch('http://localhost:8787/api/verify-payment', {
+              method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(response),
+            }).then((r) => r.json());
+            status.textContent = verify.verified ? `Payment successful: ${response.razorpay_payment_id}` : 'Payment received but verification failed.';
+          },
+        };
+        const rzp = new window.Razorpay(opts);
+        rzp.on('payment.failed', function (resp) {
+          status.textContent = `Payment failed: ${resp.error.description}`;
+        });
+        rzp.open();
+      } catch (err) {
+        status.textContent = `Payment setup error: ${err.message}`;
+      }
+    });
+  };
+
+  const injectSevaBot = () => {
+    if (document.getElementById('sevaBot')) return;
+    const box = document.createElement('div');
+    box.id = 'sevaBot';
+    box.innerHTML = `<button class="seva-toggle"><span class="seva-emoji">🌾</span> AgriFit Seva</button><div class="seva-panel"><h4>AgriFit Seva</h4><div class="seva-messages" id="sevaMessages"><div class="seva-msg bot">Namaste! Ask about courses, schemes, membership, or payment.</div></div><div class="seva-input"><input id="sevaInput" placeholder="Type your message..."><button id="sevaSend" class="btn btn-primary" type="button">Send</button></div></div>`;
+    document.body.appendChild(box);
+    box.querySelector('.seva-toggle').addEventListener('click', () => box.classList.toggle('open'));
+    const send = () => {
+      const input = box.querySelector('#sevaInput');
+      const messages = box.querySelector('#sevaMessages');
+      const text = input.value.trim();
+      if (!text) return;
+      messages.innerHTML += `<div class="seva-msg user">${text}</div>`;
+      let reply = 'For consultation call 7996213245 or email kalwal432@gmail.com.';
+      const t = text.toLowerCase();
+      if (t.includes('payment')) reply = 'Open Membership → choose plan → Payment page. Live gateway keys can be added next.';
+      if (t.includes('scheme')) reply = 'Open Scheme Hub for PM-KISAN, PMFBY, AIF and eNAM steps with official links.';
+      if (t.includes('course')) reply = 'Open Programs/Courses page and choose your sector, then click course details.';
+      messages.innerHTML += `<div class="seva-msg bot">${reply}</div>`;
+      messages.scrollTop = messages.scrollHeight;
+      input.value = '';
+    };
+    box.querySelector('#sevaSend').addEventListener('click', send);
+    box.querySelector('#sevaInput').addEventListener('keydown', (e) => { if (e.key === 'Enter') send(); });
+  };
+
+
+  const initLanguageDropdown = () => {
+    const sel = document.getElementById('languageSelect');
+    if (!sel) return;
+    const dict = {
+      en: { hero_title: 'Train. Transform. Track. Grow.', hero_sub: 'Built for farmers, FPOs, agri graduates, dealers, and partners who want measurable outcomes — not one-time training.' },
+      hi: { hero_title: 'प्रशिक्षण लें। परिवर्तन करें। ट्रैक करें। बढ़ें।', hero_sub: 'किसान, FPO, एग्री ग्रेजुएट, डीलर और पार्टनर के लिए परिणाम-आधारित प्लेटफ़ॉर्म।' },
+      kn: { hero_title: 'ತರಬೇತಿ. ರೂಪಾಂತರ. ಟ್ರ್ಯಾಕ್. ಬೆಳವಣಿಗೆ.', hero_sub: 'ರೈತರು, FPO, ಕೃಷಿ ಪದವೀಧರರು ಮತ್ತು ಪಾಲುದಾರರಿಗಾಗಿ ಫಲಿತಾಂಶ-ಆಧಾರಿತ ವೇದಿಕೆ.' }
+    };
+    const apply = (lang) => {
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const k = el.dataset.i18n;
+        if (dict[lang]?.[k]) el.textContent = dict[lang][k];
+      });
+      localStorage.setItem('agrifit_lang', lang);
+    };
+    sel.value = localStorage.getItem('agrifit_lang') || 'en';
+    apply(sel.value);
+    sel.addEventListener('change', () => apply(sel.value));
+  };
+
+  renderCourseCatalog();
+  renderCourseDetail();
+  initPayment();
+  initLanguageDropdown();
+  injectSevaBot();
+});
+
       </div>
       <div class="course-tabs">
         <article class="feature-card"><h3>Course Details</h3><p class="small">Structured modules, implementation assignments, and weekly checkpoints.</p></article>

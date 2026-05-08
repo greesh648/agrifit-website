@@ -11,7 +11,11 @@
   --shadow: 0 10px 30px rgba(11, 40, 26, 0.12);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: Calibri, "Segoe UI", Tahoma, sans-serif; color: var(--text-900); line-height: 1.6; background: #fbfdfb; overflow-x: hidden; }
+
 body { font-family: "Poppins", sans-serif; color: var(--text-900); line-height: 1.6; background: #fbfdfb; overflow-x: hidden; }
+
 a { color: inherit; text-decoration: none; }
 .container { width: min(1160px, 92vw); margin: 0 auto; }
 .surface { background: var(--surface); }
@@ -269,7 +273,7 @@ th { background: #edf5f0; }
   grid-template-columns: 2fr 1fr 1fr;
   gap: .7rem;
   margin-bottom: 1rem;
-=======
+
 }
 
 .course-toolbar {
@@ -283,6 +287,7 @@ th { background: #edf5f0; }
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 
+
 }
 .course-card {
   background: #fff;
@@ -290,6 +295,8 @@ th { background: #edf5f0; }
   border-radius: 14px;
   box-shadow: var(--shadow);
   padding: 1rem;
+
+
 
   display: grid;
   gap: .45rem;
@@ -311,6 +318,7 @@ th { background: #edf5f0; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: .8rem;
+
 
 }
 .course-card .small { color: var(--text-700); margin-bottom: .35rem; }
@@ -357,6 +365,7 @@ th { background: #edf5f0; }
   .course-grid { grid-template-columns: 1fr; }
   .course-toolbar { grid-template-columns: 1fr; }
 
+
 }
 
 @media (max-width: 1060px) {
@@ -385,6 +394,7 @@ th { background: #edf5f0; }
 @media (max-width:640px){
   .excel-card{flex-direction:column;align-items:flex-start;}
 
+
 }
 
 .high-contrast{color:#f7fbd8;background:rgba(0,0,0,.35);display:inline-block;padding:.25rem .55rem;border-radius:8px;}
@@ -401,5 +411,31 @@ th { background: #edf5f0; }
 .seva-panel a { display:block; margin-top:.45rem; color:var(--green-700); font-weight:600; }
 .high-contrast { color:#f7ffda !important; text-shadow:0 2px 8px rgba(0,0,0,.55); }
 
+
+
+/* In-site chatbot */
+.seva-panel{width:300px;max-height:420px;display:none;grid-template-rows:auto 1fr auto;gap:.5rem;}
+#sevaBot.open .seva-panel{display:grid;}
+.seva-messages{border:1px solid var(--border);border-radius:10px;padding:.6rem;height:190px;overflow:auto;background:#f8fcf9;font-size:.92rem;}
+.seva-msg{margin:.35rem 0;padding:.4rem .55rem;border-radius:8px;max-width:90%;}
+.seva-msg.bot{background:#e9f6ee;}
+.seva-msg.user{background:#dff2e7;margin-left:auto;}
+.seva-input{display:flex;gap:.4rem;}
+.seva-input input{flex:1;}
+.logo-a{color:#ffe9bc;}
+.logo-f{position:relative;}
+.logo-f::before{content:"";position:absolute;left:-2px;top:8px;width:11px;height:16px;border-radius:0 100% 0 100%;background:#9df2bb;transform:rotate(-18deg);}
+.course-cartoon{font-size:2rem;line-height:1;}
+.translate-inline{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;}
+
+.lang-select{margin:.5rem 0 1rem;border-radius:10px;padding:.45rem .6rem;border:1px solid #d8e4db;background:#fff;color:#123}
+.seva-messages{height:160px;overflow:auto;background:#f6fbf8;border:1px solid var(--border);border-radius:8px;padding:.5rem;margin:.5rem 0}
+.seva-msg{padding:.4rem .5rem;border-radius:8px;margin:.3rem 0;max-width:90%}
+.seva-msg.bot{background:#e7f5ec}
+.seva-msg.user{background:#d7e8ff;margin-left:auto}
+.seva-input{display:flex;gap:.4rem}
+.seva-input input{flex:1}
+
 }
+
 
