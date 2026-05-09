@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>AgriFit Courses</title>
+  <link rel='stylesheet' href='css/style.css'>
+  <script defer src='js/main.js'></script>
+  <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap' rel='stylesheet'>
+</head>
+<body>
+<header class='navbar'>
+  <div class='container nav-inner'>
+    <a href='index.html' class='logo'><img class="af-logo-img" src="assets/images/logo.png" alt="Agrifit logo" /><span><strong>AgriFit</strong><small>Train. Transform. Grow.</small></span></a>
+    <nav><ul class='nav-links'><li><a href='index.html'>Home</a></li><li><a href='programs.html'>Programs</a></li><li><a href='courses.html'>Skill Courses</a></li><li><a href='membership.html'>Membership</a></li></ul></nav>
+    <button class='menu-toggle'>☰</button>
+  </div>
+</header>
+<main>
+  <section class='surface'>
+    <div class='container'>
+      <p class='eyebrow'>Course Discovery</p>
+      <h2 id='courseCatalogTitle'>Explore Courses</h2>
+      <div class='course-toolbar'>
+        <input id='courseSearch' type='text' placeholder='Search by title, level, language'>
+        <select id='courseLevel'><option value='all'>All Levels</option><option value='Beginner'>Beginner</option><option value='Intermediate'>Intermediate</option><option value='Advanced'>Advanced</option></select>
+        <select id='courseMode'><option value='all'>All Modes</option><option value='Online'>Online</option><option value='Hybrid'>Hybrid</option><option value='Offline'>Offline</option></select>
+      </div>
+      <div id='courseGrid' class='grid-3'></div>
+      <p id='courseEmpty' class='small' style='display:none'>No courses found. Try different filters.</p>
+    </div>
+  </section>
+</main>
+<footer class='footer'><div class='container footer-inner'><p>AgriFit Courses</p><p><a href='programs.html'>Back to Programs</a></p></div></footer>
+</body>
+</html>

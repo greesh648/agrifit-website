@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment | AgriFit</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <script defer src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+<header class="navbar"><div class="container nav-inner"><a href="index.html" class="logo"><img class="af-logo-img" src="assets/images/logo.png" alt="Agrifit logo" /><span><strong>AgriFit</strong><small>Secure Checkout</small></span></a><nav><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="membership.html">Membership</a></li></ul></nav><button class="menu-toggle" aria-label="Open Menu">☰</button></div></header>
+<main><section><div class="container"><h1>Activate Membership: <span id="planLabel">STARTER</span></h1><p class="lead">Pay securely with Razorpay. International users can use cards in supported regions.</p>
+<div class="form-card">
+  <form id="paymentForm">
+    <label>Full Name<input required name="name"></label>
+    <label>Email<input required type="email" name="email"></label>
+    <label>Mobile<input required name="mobile"></label>
+    <button class="btn btn-primary" type="submit">Pay with Razorpay</button>
+  </form>
+  <p id="paymentStatus" class="notice"></p>
+  <p class="small">Need help? Chat with AgriFit Seva (bottom-right).</p>
+</div>
+</div></section></main>
+</body></html>
